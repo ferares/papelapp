@@ -2,7 +2,7 @@
   "name": "Papelapp",
   "short_name": "Papelapp",
   "theme_color": "#1167b1",
-  "background_color": "#fafafa",
+  "background_color": "#ffffff",
   "display": "standalone",
   "display_override": [],
   "scope": ".",

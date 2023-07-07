@@ -56,9 +56,14 @@
         </button>
       </form>
       <section class="section-results" js-section="results">
-        <h2 class="title-results">
-          Resultados
-        </h2>
+        <header class="section-results__header">
+          <h2 class="title-results">
+            Resultados
+          </h2>
+          <button type="button" class="btn-share" title="Compartir resultados" js-share>
+            <img class="btn-share__icon" src="/share.png" alt="">
+          </button>
+        </header>
         <ul class="results" js-results></ul>
         <button type="button" class="btn btn-clear" js-clear>
           Borrar resultados
@@ -91,6 +96,14 @@
         </span>
       </div>
     </footer>
+    <div class="alert alert-info" js-alert role="alert">
+      <span js-alert-content></span>
+      <button type="button" class="btn-alert-close" title="Cerrar aviso" js-alert-close>
+        <img class="btn-alert-close__img" src="/close.png" alt="">
+      </button>
+    </div>
+    <div class="visually-hidden" aria-live="polite" aria-atomic="true" js-sr-alert="polite"></div>
+    <div class="visually-hidden" aria-live="polite" aria-atomic="true" js-sr-alert="assertive"></div>
     <template js-template="result">
       <li class="result">
         <span class="result__best">Mejor resultado</span>

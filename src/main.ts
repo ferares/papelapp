@@ -70,6 +70,7 @@ function validateForm(form: HTMLFormElement) {
     ) {
       inputElement.classList.add('invalid')
       inputElement.focus()
+      srAlert('Error al ingresar los datos', 'assertive')
       return false
     }
   }
@@ -100,10 +101,64 @@ function clearResults() {
   printResults(loadResults())
 }
 
+function share() {
+  const encodedResults = encodeURIComponent(JSON.stringify(loadResults()))
+  const url = new URL(window.location.href)
+  url.searchParams.set('results', encodedResults)
+  if (navigator.share) {
+    navigator.share({
+      title: 'Papelapp',
+      text: '',
+      url: url.toString(),
+    })
+  } else {
+    navigator.clipboard.writeText(url.toString())
+    alert('Enlace copiado al portapapeles')
+  }
+}
+
+function loadUrl() {
+  const searchParams = new URLSearchParams(window.location.search)
+  if (!searchParams.has('results')) return
+  const encodedResults = searchParams.get('results') || ''
+  const decodedResults = decodeURIComponent(encodedResults)
+  localStorage.setItem('results', decodedResults)
+  window.location.search = ''
+}
+
+function alert(content: string, type: 'danger' | 'info' | 'success' = 'info', timeout: number = 3000) {
+  const alert = document.querySelector(`[js-alert]`) as HTMLElement
+  const alertContent = alert.querySelector(`[js-alert-content]`) as HTMLElement
+  alert.classList.remove('alert-danger')
+  alert.classList.remove('alert-info')
+  alert.classList.remove('alert-success')
+  alert.classList.add(`alert-${type}`)
+  alertContent.innerHTML = content
+  alert.classList.add('show')
+  setTimeout(() => alert.classList.remove('show'), timeout)
+}
+
+function srAlert(content: string, type: 'assertive' | 'polite' = 'polite', timeout: number = 3000) {
+  const srAlert: HTMLDivElement | null = document.querySelector(`[js-sr-alert="${type}"]`)
+  if (!srAlert) return
+  srAlert.innerHTML = content
+  setTimeout(() => srAlert.innerHTML = '', timeout)
+}
+
+function initAlert() {
+  const alert = document.querySelector(`[js-alert]`) as HTMLElement
+  const alertClose = alert.querySelector('[js-alert-close]') as HTMLElement
+  alertClose.addEventListener('click', () => alert.classList.remove('show'))
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('[js-form]') as HTMLFormElement
   form.addEventListener('submit', (event) => handleSubmit(event, form))
-  printResults(loadResults())
   const clearBtn = document.querySelector('[js-clear]') as HTMLButtonElement
   clearBtn.addEventListener('click', clearResults)
+  const shareBtn = document.querySelector('[js-share]') as HTMLButtonElement
+  shareBtn.addEventListener('click', share)
+  initAlert()
+  loadUrl()
+  printResults(loadResults())
 })

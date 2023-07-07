@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Papelapp</title>
+    <link rel="icon" href="/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="content">
+        <img class="logo" src="/logo.png" alt="">
+        <h1 class="title-main">
+          Papelapp
+        </h1>
+      </div>
+    </header>
+    <main class="content main">
+      <form class="form" js-form novalidate>
+        <div class="form__content">
+          <label class="form__label" for="label">
+            Marca/Alias
+          </label>
+          <div class="form__input-group">
+            <input id="label" class="form__input" type="text" js-input="label">
+          </div>
+          <label class="form__label" for="quantity">
+            Cantidad de rollos
+          </label>
+          <div class="form__input-group">
+            <input id="quantity" class="form__input" type="number" min="1" max="100" step="1" js-input="quantity" required>
+            <span class="invalid-feedback">Ingrese una cantidad entre 1 y 100</span>
+          </div>
+          <label class="form__label" for="meters">
+            Metros por rollo
+          </label>
+          <div class="form__input-group">
+            <input id="meters" class="form__input" type="number" min="1" max="100" step="1" js-input="meters" required>
+            <span class="invalid-feedback">Ingrese una cantidad entre 1 y 100</span>
+          </div>
+          <label class="form__label" for="price">
+            Precio del paquete
+          </label>
+          <div class="form__input-group">
+            <input id="price" class="form__input" type="number" min="0" js-input="price" required>
+            <span class="invalid-feedback">Ingrese un precio mayor que 0</span>
+          </div>
+        </div>
+        <button type="submit" class="btn">
+          Calcular
+        </button>
+      </form>
+      <section class="section-results" js-section="results">
+        <h2 class="title-results">
+          Resultados
+        </h2>
+        <ul class="results" js-results></ul>
+        <button type="button" class="btn btn-clear" js-clear>
+          Borrar resultados
+        </button>
+      </section>
+    </main>
+    <template js-template="result">
+      <li class="result">
+        <span class="result__best">Mejor resultado</span>
+        <div class="result__content">
+          <h3 class="result__title" js-title></h3>
+          <div class="result__value-group">
+            <span class="result__value" js-value="quantity"></span>
+            <span class="result__label">
+              rollos de
+            </span>
+            <span class="result__value" js-value="meters"></span>
+            <span class="result__label">
+              metros a
+            </span>
+            <span class="result__value" js-value="price"></span>
+          </div>
+          <hr class="result__line">
+          <div class="result__value-group result__value-group--highlight">
+            <span class="result__value" js-value="totalMeters"></span>
+            <span class="result__label">
+              metros a
+            </span>
+            <span class="result__value" js-value="pricePerMeter"></span>
+            <span class="result__label">
+              por metro
+            </span>
+          </div>
+          <button type="button" class="delete-btn" title="Borrar resultado" js-delete>
+            <img src="/trash.png" class="delete-icon" alt="">
+          </button>
+        </div>
+      </li>
+    </template>
+  </body>
+</html>

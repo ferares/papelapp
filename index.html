@@ -27,33 +27,39 @@
             Marca/Alias
           </label>
           <div class="form__input-group">
-            <input id="label" class="form__input" type="text" js-input="label">
+            <input id="label" class="form__input" type="text" js-input="label" aria-describedby="label-description">
+            <span id="label-description" class="visually-hidden">Ingrese un nombre para identificar el producto</span>
           </div>
           <label class="form__label" for="quantity">
-            Cantidad de rollos
+            Cantidad de rollos*
           </label>
           <div class="form__input-group">
-            <input id="quantity" class="form__input" type="number" min="1" max="100" step="1" js-input="quantity" required>
-            <span class="invalid-feedback">Ingrese una cantidad entre 1 y 100</span>
+            <input id="quantity" class="form__input" type="number" min="1" max="100" step="1" js-input="quantity" required aria-describedby="invalid-quantity">
+            <span id="invalid-quantity" class="invalid-feedback">Ingrese una cantidad entre 1 y 100</span>
           </div>
           <label class="form__label" for="meters">
-            Metros por rollo
+            Metros por rollo*
           </label>
           <div class="form__input-group">
-            <input id="meters" class="form__input" type="number" min="1" max="100" step="1" js-input="meters" required>
-            <span class="invalid-feedback">Ingrese una cantidad entre 1 y 100</span>
+            <input id="meters" class="form__input" type="number" min="1" max="100" step="1" js-input="meters" required aria-describedby="invalid-meters">
+            <span id="invalid-meters" class="invalid-feedback">Ingrese una cantidad entre 1 y 100</span>
           </div>
           <label class="form__label" for="price">
-            Precio del paquete
+            Precio del paquete*
           </label>
           <div class="form__input-group">
-            <input id="price" class="form__input" type="number" min="0" js-input="price" required>
-            <span class="invalid-feedback">Ingrese un precio mayor que 0</span>
+            <input id="price" class="form__input" type="number" min="0" js-input="price" required aria-describedby="invalid-price">
+            <span id="invalid-price" class="invalid-feedback">Ingrese un precio mayor que 0</span>
           </div>
         </div>
-        <button type="submit" class="btn">
-          Calcular
-        </button>
+        <div class="form__footer">
+          <span class="form__help">
+            Los campos marcados con * son requeridos
+          </span>
+          <button type="submit" class="btn">
+            Calcular
+          </button>
+        </div>
       </form>
       <section class="section-results" js-section="results">
         <header class="section-results__header">
@@ -103,7 +109,7 @@
       </button>
     </div>
     <div class="visually-hidden" aria-live="polite" aria-atomic="true" js-sr-alert="polite"></div>
-    <div class="visually-hidden" aria-live="polite" aria-atomic="true" js-sr-alert="assertive"></div>
+    <div class="visually-hidden" aria-live="assertive" aria-atomic="true" js-sr-alert="assertive"></div>
     <template js-template="result">
       <li class="result">
         <span class="result__best">Mejor resultado</span>

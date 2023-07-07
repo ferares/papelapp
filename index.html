@@ -11,6 +11,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
     <script type="module" src="/src/main.ts"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EPFDJ30GTL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-EPFDJ30GTL');
+    </script>
   </head>
   <body>
     <header class="header">
@@ -69,14 +77,14 @@
       </form>
       <section class="section-results" js-section="results">
         <header class="section-results__header">
-          <h2 class="title-results">
+          <h2 id="title-results" class="title-results">
             Resultados
           </h2>
           <button type="button" class="btn-share" title="Compartir resultados" js-share>
             <img class="btn-share__icon" src="/share.png" alt="">
           </button>
         </header>
-        <ul class="results" js-results></ul>
+        <ul class="results" js-results aria-labelledby="title-results"></ul>
         <button type="button" class="btn btn-clear" js-clear>
           Borrar resultados
         </button>
@@ -117,7 +125,7 @@
     <div class="visually-hidden" aria-live="polite" aria-atomic="true" js-sr-alert="polite"></div>
     <div class="visually-hidden" aria-live="assertive" aria-atomic="true" js-sr-alert="assertive"></div>
     <template js-template="result">
-      <li class="result">
+      <li class="result" js-result aria-label="">
         <span class="result__best">Más económico</span>
         <div class="result__content">
           <h3 class="result__title" js-title></h3>

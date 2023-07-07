@@ -45,11 +45,11 @@ function printResults(results: Result[]) {
     const pricePerMeterElement = resultElement.querySelector('[js-value="pricePerMeter"]') as HTMLElement
     const deleteBtn = resultElement.querySelector('[js-delete]') as HTMLButtonElement
     titleElement.innerText = result.label
-    quantityElement.innerText = result.quantity.toString()
-    metersElement.innerText = result.meters.toString()
-    priceElement.innerText = `$${result.price.toString()}`
-    totalMetersElement.innerText = result.totalMeters.toString()
-    pricePerMeterElement.innerText = `$${result.pricePerMeter.toString()}`
+    quantityElement.innerText = result.quantity.toLocaleString()
+    metersElement.innerText = result.meters.toLocaleString()
+    priceElement.innerText = `$${result.price.toLocaleString()}`
+    totalMetersElement.innerText = result.totalMeters.toLocaleString()
+    pricePerMeterElement.innerText = `$${result.pricePerMeter.toLocaleString()}`
     deleteBtn.addEventListener('click', () => printResults(removeResult(index)))
     resultsElement.prepend(resultElement)
   }

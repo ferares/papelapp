@@ -28,6 +28,16 @@ function removeResult(index: number) {
   return results.sort((a, b) => b.pricePerMeter - a.pricePerMeter)
 }
 
+function resultLabel(result: Result, best: boolean = false) {
+  let label = ''
+  if (best) label += 'Opción más económica.'
+  if (result.label) label += `${result.label}: `
+  label += `${result.quantity.toLocaleString()} rollos de ${result.meters.toLocaleString()} metros a $${result.price.toLocaleString()},`
+  label += 'equivalen a '
+  label += `${result.totalMeters.toLocaleString()} metros a $${result.pricePerMeter.toLocaleString()} por metro`
+  return label
+}
+
 function printResults(results: Result[]) {
   const resultsElement = document.querySelector('[js-results]') as HTMLElement
   const resultsSection = document.querySelector('[js-section="results"]') as HTMLElement
@@ -90,10 +100,17 @@ function handleSubmit(event: SubmitEvent, form: HTMLFormElement) {
   const meters = Number(metersElement.value)
   const totalMeters = quantity * meters
   const pricePerMeter = Math.round((((price / quantity) / meters) + Number.EPSILON) * 100) / 100
-  const results = storeResult({ label, quantity, meters, price, totalMeters, pricePerMeter })
+  const result = { label, quantity, meters, price, totalMeters, pricePerMeter }
+  const results = storeResult(result)
   printResults(results)
   form.classList.remove('validated')
   form.reset()
+  const bestResult = results[results.length - 1]
+  if (result === bestResult) {
+    srAlert(resultLabel(result, true))
+  } else {
+    srAlert(resultLabel(result) + '. ' + resultLabel(results[results.length - 1], true))
+  }
 }
 
 function clearResults() {

@@ -209,6 +209,7 @@ img {
   border-top-right-radius: var(--border-radius);
   display: none;
   font-size: 1rem;
+  font-style: italic;
   padding: .5rem .75rem;
   position: absolute;
   right: 0;

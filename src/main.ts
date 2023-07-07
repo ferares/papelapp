@@ -18,14 +18,14 @@ function storeResult(result: Result) {
   const results = loadResults()
   results.push(result)
   localStorage.setItem('results', JSON.stringify(results))
-  return results
+  return results.sort((a, b) => b.pricePerMeter - a.pricePerMeter)
 }
 
 function removeResult(index: number) {
   const results = loadResults()
   results.splice(index, 1)
   localStorage.setItem('results', JSON.stringify(results))
-  return results
+  return results.sort((a, b) => b.pricePerMeter - a.pricePerMeter)
 }
 
 function printResults(results: Result[]) {

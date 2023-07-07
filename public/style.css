@@ -409,6 +409,10 @@ img {
 }
 
 @media screen and (max-width: 850px) {
+  .main {
+    margin-top: calc(2rem + 120px);
+  }
+  
   .form {
     gap: 0;
   }

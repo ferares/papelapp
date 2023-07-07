@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Papelapp</title>
+    <meta name="description" content="Calculadora de precio por metro de papel higiénico">
     <link rel="icon" href="/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,9 +16,14 @@
     <header class="header">
       <div class="content">
         <img class="logo" src="/logo.png" alt="">
-        <h1 class="title-main">
-          Papelapp
-        </h1>
+        <div class="title-wrapper">
+          <h1 class="title-main">
+            Papelapp
+          </h1>
+          <span class="subtitle-main">
+            Calculadora de precio por metro de papel higiénico
+          </span>
+        </div>
       </div>
     </header>
     <main class="content main">
@@ -112,7 +118,7 @@
     <div class="visually-hidden" aria-live="assertive" aria-atomic="true" js-sr-alert="assertive"></div>
     <template js-template="result">
       <li class="result">
-        <span class="result__best">Mejor resultado</span>
+        <span class="result__best">Más económico</span>
         <div class="result__content">
           <h3 class="result__title" js-title></h3>
           <div class="result__value-group">

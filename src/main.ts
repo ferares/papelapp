@@ -87,6 +87,12 @@ function validateForm(form: HTMLFormElement) {
   return true
 }
 
+function calculateResult(label: string, quantity: number, meters: number, price: number): Result {
+  const totalMeters = quantity * meters
+  const pricePerMeter = Math.round((((price / quantity) / meters) + Number.EPSILON) * 100) / 100
+  return { label, quantity, meters, price, totalMeters, pricePerMeter }
+}
+
 function handleSubmit(event: SubmitEvent, form: HTMLFormElement) {
   event.preventDefault()
   if (!validateForm(form)) return
@@ -98,9 +104,7 @@ function handleSubmit(event: SubmitEvent, form: HTMLFormElement) {
   const quantity = Number(quantityElement.value)
   const price = Number(priceElement.value)
   const meters = Number(metersElement.value)
-  const totalMeters = quantity * meters
-  const pricePerMeter = Math.round((((price / quantity) / meters) + Number.EPSILON) * 100) / 100
-  const result = { label, quantity, meters, price, totalMeters, pricePerMeter }
+  const result = calculateResult(label, quantity, meters, price)
   const results = storeResult(result)
   printResults(results)
   form.classList.remove('validated')
@@ -119,9 +123,13 @@ function clearResults() {
 }
 
 function share() {
-  const encodedResults = encodeURIComponent(JSON.stringify(loadResults()))
+  const results = loadResults()
+  let encodedResults = ''
+  for (const result of results) {
+    encodedResults += `/${encodeURIComponent(result.label)}\\${result.quantity}\\${result.meters}\\${result.price}`
+  }
   const url = new URL(window.location.href)
-  url.searchParams.set('results', encodedResults)
+  url.searchParams.set('results', encodedResults.slice(1))
   if (navigator.share) {
     navigator.share({
       title: 'Papelapp',
@@ -138,8 +146,13 @@ function loadUrl() {
   const searchParams = new URLSearchParams(window.location.search)
   if (!searchParams.has('results')) return
   const encodedResults = searchParams.get('results') || ''
-  const decodedResults = decodeURIComponent(encodedResults)
-  localStorage.setItem('results', decodedResults)
+  const resultItems = encodedResults.split('/')
+  const results = []
+  for (const resultItem of resultItems) {
+    const [label, quantity, meters, price] = resultItem.split('\\')
+    results.push(calculateResult(decodeURIComponent(label), Number(quantity), Number(meters), Number(price)))
+  }
+  localStorage.setItem('results', JSON.stringify(results))
   window.location.search = ''
 }
 

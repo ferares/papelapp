@@ -37,6 +37,7 @@
         </div>
       </div>
     </header>
+
     <main class="content main">
       <form class="form" js-form novalidate>
         <div class="form__content">
@@ -78,6 +79,7 @@
           </button>
         </div>
       </form>
+
       <section class="section-results" js-section="results">
         <header class="section-results__header">
           <h2 id="title-results" class="title-results">
@@ -93,6 +95,7 @@
         </button>
       </section>
     </main>
+
     <footer class="footer">
       <div class="content">
         <span class="footer__text">
@@ -119,46 +122,47 @@
         </span>
       </div>
     </footer>
-    <div class="alert alert-info" js-alert role="alert">
+
+    <div class="visually-hidden" aria-live="polite" aria-atomic="true" js-sr-alert="polite"></div>
+    <div class="visually-hidden" aria-live="assertive" aria-atomic="true" js-sr-alert="assertive"></div>
+
+    <template js-template="alert">
       <span js-alert-content></span>
       <button type="button" class="btn-alert-close" title="Cerrar aviso" js-alert-close>
         <img class="btn-alert-close__img" src="/close.png" alt="">
       </button>
-    </div>
-    <div class="visually-hidden" aria-live="polite" aria-atomic="true" js-sr-alert="polite"></div>
-    <div class="visually-hidden" aria-live="assertive" aria-atomic="true" js-sr-alert="assertive"></div>
+    </template>
+
     <template js-template="result">
-      <li class="result">
-        <span class="result__best">Más económico</span>
-        <div class="result__content">
-          <h3 class="result__title" js-title></h3>
-          <div class="result__value-group">
-            <span class="result__value" js-value="quantity"></span>
-            <span class="result__label">
-              rollos de
-            </span>
-            <span class="result__value" js-value="meters"></span>
-            <span class="result__label">
-              metros a
-            </span>
-            <span class="result__value" js-value="price"></span>
-          </div>
-          <hr class="result__line">
-          <div class="result__value-group result__value-group--highlight">
-            <span class="result__value" js-value="totalMeters"></span>
-            <span class="result__label">
-              metros a
-            </span>
-            <span class="result__value" js-value="pricePerMeter"></span>
-            <span class="result__label">
-              por metro
-            </span>
-          </div>
-          <button type="button" class="delete-btn" title="Borrar resultado" js-delete>
-            <img src="/trash.png" class="delete-icon" alt="">
-          </button>
+      <span class="result__best">Más económico</span>
+      <div class="result__content">
+        <h3 class="result__title" js-title></h3>
+        <div class="result__value-group">
+          <span class="result__value" js-value="quantity"></span>
+          <span class="result__label">
+            rollos de
+          </span>
+          <span class="result__value" js-value="meters"></span>
+          <span class="result__label">
+            metros a
+          </span>
+          <span class="result__value" js-value="price"></span>
         </div>
-      </li>
+        <hr class="result__line">
+        <div class="result__value-group result__value-group--highlight">
+          <span class="result__value" js-value="totalMeters"></span>
+          <span class="result__label">
+            metros a
+          </span>
+          <span class="result__value" js-value="pricePerMeter"></span>
+          <span class="result__label">
+            por metro
+          </span>
+        </div>
+        <button type="button" class="delete-btn" title="Borrar resultado" js-delete>
+          <img src="/trash.png" class="delete-icon" alt="">
+        </button>
+      </div>
     </template>
   </body>
 </html>

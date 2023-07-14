@@ -28,9 +28,10 @@ class Results {
   }
 
   private loadFromUrl() {
+    debugger
     const searchParams = new URLSearchParams(window.location.search)
     if (!searchParams.has('results')) return false
-    const encodedResults = searchParams.get('results') || ''
+    const encodedResults = atob(searchParams.get('results') || '')
     const resultItems = encodedResults.split('/')
     const results = []
     for (const resultItem of resultItems) {
@@ -96,8 +97,9 @@ class Results {
     for (const result of this.results) {
       encodedResults += `/${encodeURIComponent(result.label)}\\${result.quantity}\\${result.meters}\\${result.price}`
     }
+    encodedResults = btoa(encodedResults.slice(1))
     const url = new URL(window.location.href)
-    url.searchParams.set('results', encodedResults.slice(1))
+    url.searchParams.set('results', encodedResults)
     if (navigator.share) {
       navigator.share({
         title: 'Papelapp',

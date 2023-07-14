@@ -10,7 +10,6 @@ class Results {
   
   constructor() {
     this.share = this.share.bind(this)
-    this.clear = this.clear.bind(this)
     this.print = this.print.bind(this)
     this.load = this.load.bind(this)
     this.add = this.add.bind(this)
@@ -19,8 +18,6 @@ class Results {
     this.welcomeSection = document.querySelector('[js-section="welcome"]') as HTMLElement
     this.resultsSection = document.querySelector('[js-section="results"]') as HTMLElement
     this.resultsElement = this.resultsSection.querySelector('[js-results]') as HTMLElement
-    const clearBtn = this.resultsSection.querySelector('[js-clear]') as HTMLButtonElement
-    clearBtn.addEventListener('click', this.clear)
     const shareBtn = this.resultsSection.querySelector('[js-share]') as HTMLButtonElement
     shareBtn.addEventListener('click', this.share)
     this.load()
@@ -76,12 +73,6 @@ class Results {
     if (result === bestResult) message += result.srLabel
     else message += `${result.srLabel}. ${bestResult.srLabel}`
     window.Papelapp.srAlert(`Opción más económica. ${message}`)
-  }
-
-  clear() {
-    localStorage.clear()
-    this.results = []
-    this.print()
   }
 
   private print() {

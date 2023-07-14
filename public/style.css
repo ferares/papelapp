@@ -50,7 +50,7 @@ img {
   background-color: var(--color-primary);
   border: 0;
   border-radius: var(--border-radius);
-  box-shadow: 0 2px 0 hsl(208, 80%, 54%), var(--shadow);
+  box-shadow: 0 3px 0 hsl(208, 100%, 54%), var(--shadow);
   color: #fff;
   cursor: pointer;
   display: inline-block;
@@ -67,7 +67,7 @@ img {
 
 .btn:active {
   box-shadow: none;
-  transform: translateY(2px) translateZ(0);
+  transform: translateY(3px) translateZ(0);
 }
 
 .btn--round {
@@ -87,6 +87,7 @@ img {
   gap: 1rem;
   justify-content: end;
   margin-top: auto;
+  padding-top: 1rem;
 }
 
 .btn-add-wrapper__arrow {
@@ -511,10 +512,6 @@ img {
   width: 1rem;
 }
 
-.btn-clear {
-  margin-right: 0;
-}
-
 .footer {
   background-color: var(--color-primary);
   color: #fff;
@@ -578,10 +575,6 @@ img {
 
   .results {
     grid-template-columns: 1fr;
-  }
-
-  .btn-clear {
-    margin-right: auto;
   }
 
   .btn-add-wrapper {

@@ -39,47 +39,30 @@
     </header>
 
     <main class="content main">
-      <form class="form" js-form novalidate>
-        <div class="form__content">
-          <label class="form__label" for="label">
-            Marca/Alias
-          </label>
-          <div class="form__input-group">
-            <input id="label" class="form__input" type="text" js-input="label" aria-describedby="label-description">
-            <span id="label-description" class="visually-hidden">Ingrese un nombre para identificar el producto</span>
-          </div>
-          <label class="form__label" for="quantity">
-            Cantidad de rollos*
-          </label>
-          <div class="form__input-group">
-            <input id="quantity" class="form__input" type="number" min="1" max="100" step="1" js-input="quantity" required aria-describedby="invalid-quantity">
-            <span id="invalid-quantity" class="invalid-feedback">Ingrese una cantidad entre 1 y 100</span>
-          </div>
-          <label class="form__label" for="meters">
-            Metros por rollo*
-          </label>
-          <div class="form__input-group">
-            <input id="meters" class="form__input" type="number" min="1" max="100" step="1" js-input="meters" required aria-describedby="invalid-meters">
-            <span id="invalid-meters" class="invalid-feedback">Ingrese una cantidad entre 1 y 100</span>
-          </div>
-          <label class="form__label" for="price">
-            Precio del paquete*
-          </label>
-          <div class="form__input-group">
-            <input id="price" class="form__input" type="number" min="0" js-input="price" required aria-describedby="invalid-price">
-            <span id="invalid-price" class="invalid-feedback">Ingrese un precio mayor que 0</span>
-          </div>
+      <section class="section-welcome show" js-section="welcome">
+        <h2 class="welcome__title">
+          Te damos la bienvenida a Papelapp
+        </h2>
+        <div class="welcome__content">
+          <p class="welcome__text">
+            ¿Cuántas veces te encontraste frente a la góndola del supermercado;
+            intentando descubrir cuál es la oferta de papel higiénico más conveniente?
+            Precio total dividido cantidad de rollos por metro por rollo... fácil, ¿no? Más bien, engorroso.
+            Parece pavada pero es un tema serio que Fernando Esponda describe muy bien en su
+            <a rel="noreferrer noopener nofollow" target="_blank" href="http://www.razonesypersonas.com/2021/03/teorema-del-precio-unitario-del-papel.html">teorema del precio unitario del papel higiénico</a>.
+          </p>
+          <p class="welcome__text">
+            Con <strong>Papelapp</strong> podés comparar el precio por metro de los paquetes de
+            papel higiénico rápida y fácilmente... eso sí, la elección de la calidad es tuya y no
+            la podemos calcular.
+          </p>
+          <p class="welcome__text">
+            Simplemente <u>cargá los datos de los distintos paquetes que veas en las góndolas</u> y
+            <strong>Papelapp</strong> calculará la <u>cantidad de metros y el precio por metro de cada uno,
+            ordenándolos por precio de menor a mayor</u>.
+          </p>
         </div>
-        <div class="form__footer">
-          <span class="form__help">
-            Los campos marcados con * son requeridos
-          </span>
-          <button type="submit" class="btn">
-            Calcular
-          </button>
-        </div>
-      </form>
-
+      </section>
       <section class="section-results" js-section="results">
         <header class="section-results__header">
           <h2 id="title-results" class="title-results">
@@ -94,6 +77,17 @@
           Borrar resultados
         </button>
       </section>
+
+      <div class="btn-add-wrapper">
+        <p class="btn-add-wrapper__arrow">
+          Hacé click en este botón para cargar el primer producto
+          <img class="btn-add-wrapper__arrow__img" src="/arrow.png" alt="">
+          <img class="btn-add-wrapper__arrow__img--mobile" src="/arrow-down.png" alt="">
+        </p>
+        <button type="button" class="btn btn--round btn-add" js-modal-open="form">
+          <img class="btn-add__img" src="/add.png" alt="Agregar producto">
+        </button>
+      </div>
     </main>
 
     <footer class="footer">
@@ -125,6 +119,59 @@
 
     <div class="visually-hidden" aria-live="polite" aria-atomic="true" js-sr-alert="polite"></div>
     <div class="visually-hidden" aria-live="assertive" aria-atomic="true" js-sr-alert="assertive"></div>
+
+    <papelapp-modal class="modal" js-modal="form">
+      <dialog class="modal-dialog" aria-labelledby="modal-title" js-dialog>
+        <div class="modal-content" js-modal-content>
+          <h2 id="modal-title" class="modal-title">
+            Agregar producto
+          </h2>
+          <button type="button" class="modal-close" js-modal-close>
+            <img src="/close.png" alt="Cerrar">
+          </button>
+          <form class="form" js-form novalidate>
+            <div class="form__content">
+              <label class="form__label" for="label">
+                Marca/Alias
+              </label>
+              <div class="form__input-group">
+                <input id="label" class="form__input" type="text" js-input="label" aria-describedby="label-description">
+                <span id="label-description" class="visually-hidden">Ingrese un nombre para identificar el producto</span>
+              </div>
+              <label class="form__label" for="quantity">
+                Cantidad de rollos*
+              </label>
+              <div class="form__input-group">
+                <input id="quantity" class="form__input" type="number" min="1" max="100" step="1" js-input="quantity" required aria-describedby="invalid-quantity">
+                <span id="invalid-quantity" class="invalid-feedback">Ingrese una cantidad entre 1 y 100</span>
+              </div>
+              <label class="form__label" for="meters">
+                Metros por rollo*
+              </label>
+              <div class="form__input-group">
+                <input id="meters" class="form__input" type="number" min="1" max="100" step="1" js-input="meters" required aria-describedby="invalid-meters">
+                <span id="invalid-meters" class="invalid-feedback">Ingrese una cantidad entre 1 y 100</span>
+              </div>
+              <label class="form__label" for="price">
+                Precio del paquete*
+              </label>
+              <div class="form__input-group">
+                <input id="price" class="form__input" type="number" min="0" js-input="price" required aria-describedby="invalid-price">
+                <span id="invalid-price" class="invalid-feedback">Ingrese un precio mayor que 0</span>
+              </div>
+            </div>
+            <div class="form__footer">
+              <span class="form__help">
+                Los campos marcados con * son requeridos
+              </span>
+              <button type="submit" class="btn">
+                Calcular
+              </button>
+            </div>
+          </form>
+        </div>
+      </dialog>
+    </papelapp-modal>
 
     <template js-template="alert">
       <span js-alert-content></span>

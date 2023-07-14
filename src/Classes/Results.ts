@@ -6,6 +6,7 @@ class Results {
   private results: Result[] = []
   private resultsElement: HTMLElement
   private resultsSection: HTMLElement
+  private welcomeSection: HTMLElement
   
   constructor() {
     this.share = this.share.bind(this)
@@ -15,6 +16,7 @@ class Results {
     this.add = this.add.bind(this)
     this.remove = this.remove.bind(this)
 
+    this.welcomeSection = document.querySelector('[js-section="welcome"]') as HTMLElement
     this.resultsSection = document.querySelector('[js-section="results"]') as HTMLElement
     this.resultsElement = this.resultsSection.querySelector('[js-results]') as HTMLElement
     const clearBtn = this.resultsSection.querySelector('[js-clear]') as HTMLButtonElement
@@ -84,8 +86,13 @@ class Results {
 
   private print() {
     this.resultsElement.innerText = ''
-    if (this.results.length) this.resultsSection.classList.add('show')
-    else this.resultsSection.classList.remove('show')
+    if (this.results.length) {
+      this.resultsSection.classList.add('show')
+      this.welcomeSection.classList.remove('show')
+    } else {
+      this.resultsSection.classList.remove('show')
+      this.welcomeSection.classList.add('show')
+    }
 
     for (const [index, result] of this.results.entries()) {
       result.addEventListener('papelapp/result:remove', () => this.remove(index))

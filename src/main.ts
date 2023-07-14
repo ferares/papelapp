@@ -1,6 +1,7 @@
 import Papelapp from './Classes/Papelapp'
 import Results from './Classes/Results'
 import Alert from './Elements/Alert'
+import Modal from './Elements/Modal'
 import Result from './Elements/Result'
 
 declare global {
@@ -49,11 +50,14 @@ function handleSubmit(event: SubmitEvent, form: HTMLFormElement) {
   window.Results.add(result)
   form.classList.remove('validated')
   form.reset()
+  const modal =document.querySelector('[js-modal="form"]') as Modal
+  modal.hide()
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   customElements.define('papelapp-result', Result)
   customElements.define('papelapp-alert', Alert)
+  customElements.define('papelapp-modal', Modal)
   window.Results = new Results()
   const form = document.querySelector('[js-form]') as HTMLFormElement
   form.addEventListener('submit', (event) => handleSubmit(event, form))

@@ -61,4 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.Results = new Results()
   const form = document.querySelector('[js-form]') as HTMLFormElement
   form.addEventListener('submit', (event) => handleSubmit(event, form))
+
+  // Register the service worker
+  if (typeof navigator.serviceWorker !== 'undefined') {
+    navigator.serviceWorker.register('/service-worker.js')
+  }
 })

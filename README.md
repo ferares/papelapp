@@ -1,12 +1,12 @@
 # Papelapp
 
-¿Cuántas veces te encontraste frente a la góndola del supermercado intentando descubrir cuál es la oferta de papel higiénico más conveniente? Precio total dividido cantidad de rollos por metro por rollo... fácil, ¿no? Más bien, engorroso.
+¿Cuántas veces te encontraste frente a la góndola del supermercado intentando descubrir cuál es la oferta de papel higiénico más conveniente? Precio total dividido cantidad de rollos por metro por rollo... fácil, ¿no? 🤔 Más bien, engorroso 😓
 
-Parece pavada pero es un tema serio que Fernando Esponda describe muy bien en su [teorema del precio unitario del papel higiénico](http://www.razonesypersonas.com/2021/03/teorema-del-precio-unitario-del-papel.html).
+Parece pavada pero es un tema serio que Fernando Esponda describe muy bien en su [teorema del precio unitario del papel higiénico](http://www.razonesypersonas.com/2021/03/teorema-del-precio-unitario-del-papel.html) 📝
 
-Con **Papelapp** podés comparar el precio por metro de los paquetes de papel higiénico rápida y fácilmente... eso sí, la elección de la calidad es tuya y no la podemos calcular.
+Con 🧻 **Papelapp** podés comparar el precio por metro de los paquetes de papel higiénico rápida y fácilmente... eso sí, la elección de la calidad es tuya y no la podemos calcular 🍑
 
-Podés acceder a la app acá: [Papelapp](https://papelapp.ares.uy)
+Podés acceder a la app acá: [🧻 Papelapp](https://papelapp.ares.uy)
 
 ## Instrucciones para desarrolladores
 

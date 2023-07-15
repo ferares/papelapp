@@ -28,7 +28,6 @@ class Results {
   }
 
   private loadFromUrl() {
-    debugger
     const searchParams = new URLSearchParams(window.location.search)
     if (!searchParams.has('results')) return false
     const encodedResults = atob(searchParams.get('results') || '')

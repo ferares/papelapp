@@ -38,6 +38,17 @@ img {
   max-width: 100%;
 }
 
+p {
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
+ol {
+  display: grid;
+  gap: 1rem;
+  line-height: 1.5;
+}
+
 /* Utils */
 .content {
   margin-left: auto;
@@ -382,11 +393,6 @@ img {
 .welcome__content {
   margin: 0 auto;
   max-width: 30em;
-  line-height: 1.3;
-}
-
-.welcome__text {
-  margin-bottom: 2rem;
 }
 
 /* Results */

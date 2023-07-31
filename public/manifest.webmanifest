@@ -11,10 +11,16 @@
   "description": "Calculadora de precio por metro de papel higiénico",
   "dir": "ltr",
   "lang": "es",
-  "prefer_related_applications": false,
-  "related_applications": [],
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=uy.ares.papelapp.twa",
+      "id": "uy.ares.papelapp.twa"
+    }
+  ],
   "categories": ["shopping"],
-  "iarc_rating_id": "",
+  "iarc_rating_id": "86583d57-1894-41b6-a66e-7ae079c63344 ",
   "shortcuts": [],
   "icons": [
     {

@@ -13,7 +13,7 @@ class Results {
     this.print = this.print.bind(this)
     this.load = this.load.bind(this)
     this.add = this.add.bind(this)
-    this.remove = this.remove.bind(this)
+    this.removeResult = this.removeResult.bind(this)
 
     this.welcomeSection = document.querySelector('[js-section="welcome"]') as HTMLElement
     this.resultsSection = document.querySelector('[js-section="results"]') as HTMLElement
@@ -33,6 +33,7 @@ class Results {
     const encodedResults = atob(searchParams.get('results') || '')
     const resultItems = encodedResults.split('/')
     const results = []
+    let index = 0
     for (const resultItem of resultItems) {
       const [label, quantity, meters, price] = resultItem.split('\\')
       results.push(new Result({
@@ -40,7 +41,8 @@ class Results {
         quantity: Number(quantity),
         meters: Number(meters),
         price: Number(price),
-      }))
+      }, index, this))
+      index++
     }
     localStorage.setItem('results', JSON.stringify(results))
     window.location.search = ''
@@ -52,12 +54,12 @@ class Results {
     let resultsString = localStorage.getItem('results')
     if (!resultsString) resultsString = '[]'
     const resultsData = JSON.parse(resultsString) as ResultData[]
-    const results = resultsData.map((resultData) => new Result(resultData))
+    const results = resultsData.map((resultData, index) => new Result(resultData, index, this))
     this.results = results.sort((a, b) => b.pricePerMeter - a.pricePerMeter)
     this.print()
   }
   
-  private remove(index: number) {
+  removeResult(index: number) {
     this.results.splice(index, 1)
     localStorage.setItem('results', this.stringify())
     this.print()
@@ -85,9 +87,11 @@ class Results {
       this.welcomeSection.classList.add('show')
     }
 
-    for (const [index, result] of this.results.entries()) {
-      result.addEventListener('papelapp/result:remove', () => this.remove(index))
+    let index = 0
+    for (const result of this.results) {
+      result.updateIndex(index)
       this.resultsElement.prepend(result)
+      index++
     }
   }
 

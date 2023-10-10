@@ -1,3 +1,4 @@
+import Results from '../Classes/Results'
 import ResultData from '../Types/ResultData'
 
 class Result extends HTMLElement {
@@ -8,8 +9,9 @@ class Result extends HTMLElement {
   readonly price: number
   readonly totalMeters: number
   readonly pricePerMeter: number
+  index: number
   
-  constructor(resultData: ResultData) {
+  constructor(resultData: ResultData, index: number, results: Results) {
     super()
 
     this.label = resultData.label
@@ -43,7 +45,12 @@ class Result extends HTMLElement {
     this.classList.add('result')
     this.role = 'listitem'
     this.appendChild(templateClone)
-    deleteBtn.addEventListener('click', () => window.Papelapp.emitEvent(this, 'result:remove'))
+    this.index = index
+    deleteBtn.addEventListener('click', () => results.removeResult(this.index))
+  }
+
+  updateIndex(index: number) {
+    this.index = index
   }
 
   data() {

@@ -152,21 +152,21 @@
                 Cantidad de rollos*
               </label>
               <div class="form__input-group">
-                <input id="quantity" class="form__input" type="number" min="1" max="100" step="1" js-input="quantity" required aria-describedby="invalid-quantity">
-                <span id="invalid-quantity" class="invalid-feedback">Ingrese una cantidad entre 1 y 100</span>
+                <input id="quantity" class="form__input" type="number" min="1" step="1" js-input="quantity" required aria-describedby="invalid-quantity">
+                <span id="invalid-quantity" class="invalid-feedback">Ingrese una cantidad mayor que 1</span>
               </div>
               <label class="form__label" for="meters">
                 Metros por rollo*
               </label>
               <div class="form__input-group">
-                <input id="meters" class="form__input" type="number" min="1" max="100" step="1" js-input="meters" required aria-describedby="invalid-meters">
-                <span id="invalid-meters" class="invalid-feedback">Ingrese una cantidad entre 1 y 100</span>
+                <input id="meters" class="form__input" type="number" min="1" step="1" js-input="meters" required aria-describedby="invalid-meters">
+                <span id="invalid-meters" class="invalid-feedback">Ingrese una cantidad mayor que 1</span>
               </div>
               <label class="form__label" for="price">
                 Precio del paquete*
               </label>
               <div class="form__input-group">
-                <input id="price" class="form__input" type="number" min="0" js-input="price" required aria-describedby="invalid-price">
+                <input id="price" class="form__input" type="number" min="0" step="any" js-input="price" required aria-describedby="invalid-price">
                 <span id="invalid-price" class="invalid-feedback">Ingrese un precio mayor que 0</span>
               </div>
             </div>

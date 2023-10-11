@@ -46,7 +46,7 @@ function handleSubmit(event: SubmitEvent, form: HTMLFormElement) {
   const quantity = Number(quantityElement.value)
   const price = Number(priceElement.value)
   const meters = Number(metersElement.value)
-  const result = new Result({ label, quantity,  meters, price })
+  const result = new Result({ label, quantity, meters, price }, -1, window.Results)
   window.Results.add(result)
   form.classList.remove('validated')
   form.reset()

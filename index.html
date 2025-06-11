@@ -92,7 +92,7 @@
           <img class="btn-add-wrapper__arrow__img" src="/arrow.png" alt="">
           <img class="btn-add-wrapper__arrow__img--mobile" src="/arrow-down.png" alt="">
         </p>
-        <button type="button" class="btn btn--round btn-add" js-modal-open="form">
+        <button type="button" class="btn btn--round btn-add" js-add>
           <img class="btn-add__img" src="/add.png" alt="Agregar producto">
         </button>
       </div>
@@ -135,52 +135,54 @@
     <papelapp-modal class="modal" js-modal="form">
       <dialog class="modal-dialog" aria-labelledby="modal-title" js-dialog>
         <div class="modal-content" js-modal-content>
-          <h2 id="modal-title" class="modal-title">
+          <h2 id="modal-title" class="modal-title" js-modal-title>
             Agregar producto
           </h2>
           <button type="button" class="modal-close" js-modal-close>
             <img src="/close.png" alt="Cerrar">
           </button>
-          <form class="form" js-form novalidate>
-            <div class="form__content">
-              <label class="form__label" for="label">
-                Marca/Alias
-              </label>
-              <div class="form__input-group">
-                <input id="label" class="form__input" type="text" js-input="label" aria-describedby="label-description">
-                <span id="label-description" class="visually-hidden">Ingrese un nombre para identificar el producto</span>
+          <papelapp-form js-form-wrapper>
+            <form class="form" novalidate js-form>
+              <div class="form__content">
+                <label class="form__label" for="label">
+                  Marca/Alias
+                </label>
+                <div class="form__input-group">
+                  <input id="label" class="form__input" type="text" js-input="label" aria-describedby="label-description">
+                  <span id="label-description" class="visually-hidden">Ingrese un nombre para identificar el producto</span>
+                </div>
+                <label class="form__label" for="quantity">
+                  Cantidad de rollos*
+                </label>
+                <div class="form__input-group">
+                  <input id="quantity" class="form__input" type="number" min="1" step="1" js-input="quantity" required aria-describedby="invalid-quantity">
+                  <span id="invalid-quantity" class="invalid-feedback">Ingrese una cantidad mayor que 1</span>
+                </div>
+                <label class="form__label" for="meters">
+                  Metros por rollo*
+                </label>
+                <div class="form__input-group">
+                  <input id="meters" class="form__input" type="number" min="1" step="1" js-input="meters" required aria-describedby="invalid-meters">
+                  <span id="invalid-meters" class="invalid-feedback">Ingrese una cantidad mayor que 1</span>
+                </div>
+                <label class="form__label" for="price">
+                  Precio del paquete*
+                </label>
+                <div class="form__input-group">
+                  <input id="price" class="form__input" type="number" min="0" step="any" js-input="price" required aria-describedby="invalid-price">
+                  <span id="invalid-price" class="invalid-feedback">Ingrese un precio mayor que 0</span>
+                </div>
               </div>
-              <label class="form__label" for="quantity">
-                Cantidad de rollos*
-              </label>
-              <div class="form__input-group">
-                <input id="quantity" class="form__input" type="number" min="1" step="1" js-input="quantity" required aria-describedby="invalid-quantity">
-                <span id="invalid-quantity" class="invalid-feedback">Ingrese una cantidad mayor que 1</span>
+              <div class="form__footer">
+                <span class="form__help">
+                  Los campos marcados con * son requeridos
+                </span>
+                <button type="submit" class="btn" js-form-btn>
+                  Agregar
+                </button>
               </div>
-              <label class="form__label" for="meters">
-                Metros por rollo*
-              </label>
-              <div class="form__input-group">
-                <input id="meters" class="form__input" type="number" min="1" step="1" js-input="meters" required aria-describedby="invalid-meters">
-                <span id="invalid-meters" class="invalid-feedback">Ingrese una cantidad mayor que 1</span>
-              </div>
-              <label class="form__label" for="price">
-                Precio del paquete*
-              </label>
-              <div class="form__input-group">
-                <input id="price" class="form__input" type="number" min="0" step="any" js-input="price" required aria-describedby="invalid-price">
-                <span id="invalid-price" class="invalid-feedback">Ingrese un precio mayor que 0</span>
-              </div>
-            </div>
-            <div class="form__footer">
-              <span class="form__help">
-                Los campos marcados con * son requeridos
-              </span>
-              <button type="submit" class="btn">
-                Calcular
-              </button>
-            </div>
-          </form>
+            </form>
+          </papelapp-form>
         </div>
       </dialog>
     </papelapp-modal>

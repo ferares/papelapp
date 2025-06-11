@@ -7,7 +7,7 @@ class Results {
   private resultsElement: HTMLElement
   private resultsSection: HTMLElement
   private welcomeSection: HTMLElement
-  
+
   constructor() {
     this.share = this.share.bind(this)
     this.print = this.print.bind(this)
@@ -15,8 +15,8 @@ class Results {
     this.add = this.add.bind(this)
     this.removeResult = this.removeResult.bind(this)
 
-    this.welcomeSection = document.querySelector('[js-section="welcome"]') as HTMLElement
-    this.resultsSection = document.querySelector('[js-section="results"]') as HTMLElement
+    this.welcomeSection = document.querySelector('[js-section=welcome]') as HTMLElement
+    this.resultsSection = document.querySelector('[js-section=results]') as HTMLElement
     this.resultsElement = this.resultsSection.querySelector('[js-results]') as HTMLElement
     const shareBtn = this.resultsSection.querySelector('[js-share]') as HTMLButtonElement
     shareBtn.addEventListener('click', this.share)
@@ -41,7 +41,7 @@ class Results {
         quantity: Number(quantity),
         meters: Number(meters),
         price: Number(price),
-      }, index, this))
+      }, index))
       index++
     }
     localStorage.setItem('results', JSON.stringify(results))
@@ -54,11 +54,11 @@ class Results {
     let resultsString = localStorage.getItem('results')
     if (!resultsString) resultsString = '[]'
     const resultsData = JSON.parse(resultsString) as ResultData[]
-    const results = resultsData.map((resultData, index) => new Result(resultData, index, this))
+    const results = resultsData.map((resultData, index) => new Result(resultData, index))
     this.results = results.sort((a, b) => b.pricePerMeter - a.pricePerMeter)
     this.print()
   }
-  
+
   removeResult(index: number) {
     this.results.splice(index, 1)
     localStorage.setItem('results', this.stringify())
@@ -75,6 +75,12 @@ class Results {
     if (result === bestResult) message += result.srLabel
     else message += `${result.srLabel}. ${bestResult.srLabel}`
     window.Papelapp.srAlert(`Opción más económica. ${message}`)
+  }
+
+  editResult(index: number, result: Result) {
+    this.results[index] = result
+    localStorage.setItem('results', this.stringify())
+    this.print()
   }
 
   private print() {

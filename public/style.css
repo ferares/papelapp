@@ -439,6 +439,7 @@ ol {
 }
 
 .result {
+  cursor: pointer;
   position: relative;
 }
 

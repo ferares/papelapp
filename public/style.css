@@ -439,7 +439,6 @@ ol {
 }
 
 .result {
-  cursor: pointer;
   position: relative;
 }
 
@@ -505,18 +504,41 @@ ol {
   width: 100%;
 }
 
-.delete-btn {
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
-  padding: 0;
+.result__actions {
+  align-items: center;
+  display: flex;
+  gap: .75rem;
   position: absolute;
   right: 1rem;
   bottom: 1rem;
 }
 
-.delete-icon {
+.result__action {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+.result__action__icon {
   width: 1rem;
+}
+
+/* Delete confirmation modal */
+.delete-question {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.delete-btns {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.delete-btns .btn {
+  width: 100%;
 }
 
 .footer {

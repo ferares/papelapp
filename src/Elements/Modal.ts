@@ -17,10 +17,10 @@ class Modal extends HTMLElement {
     document.querySelectorAll(`[js-modal-open="${this.label}"]`).forEach((openBtn) => {
       (openBtn as HTMLElement).addEventListener('click', this.show)
     })
-    
+
     const contentElement = this.querySelector('[js-modal-content]') as HTMLElement
     contentElement.addEventListener('click', this.insideClickHandler)
-    
+
     this.querySelectorAll('[js-modal-close]').forEach((closeBtn) => {
       (closeBtn as HTMLElement).addEventListener('click', this.hide)
     })
@@ -48,6 +48,7 @@ class Modal extends HTMLElement {
     if (pushState) window.history.pushState({ modal: false }, 'modal-close')
     window.removeEventListener('popstate', this.hideOnNav)
     window.addEventListener('popstate', this.showOnNav)
+    this.dispatchEvent(new CustomEvent("papelapp:modal-close"))
   }
 
   private insideClickHandler() {

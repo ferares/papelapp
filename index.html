@@ -187,6 +187,30 @@
       </dialog>
     </papelapp-modal>
 
+    <papelapp-modal class="modal" js-modal="delete">
+      <dialog class="modal-dialog" aria-labelledby="modal-title" js-dialog>
+        <div class="modal-content" js-modal-content>
+          <h2 id="modal-title" class="modal-title" js-modal-title>
+            Borrar elemento
+          </h2>
+          <button type="button" class="modal-close" js-modal-close>
+            <img src="/close.png" alt="Cerrar">
+          </button>
+          <span class="delete-question">
+            ¿Desea borrar este elemento?
+          </span>
+          <div class="delete-btns">
+            <button type="button" class="btn" js-delete-confirmation>
+              Si
+            </button>
+            <button type="button" class="btn" js-modal-close>
+              No
+            </button>
+          </div>
+        </div>
+      </dialog>
+    </papelapp-modal>
+
     <template js-template="alert">
       <span js-alert-content></span>
       <button type="button" class="btn-alert-close" title="Cerrar aviso" js-alert-close>
@@ -220,9 +244,14 @@
             por metro
           </span>
         </div>
-        <button type="button" class="delete-btn" title="Borrar resultado" js-delete>
-          <img src="/trash.png" class="delete-icon" alt="">
-        </button>
+        <div class="result__actions">
+          <button type="button" class="result__action" title="Editar resultado" js-edit>
+            <img src="/edit.png" class="result__action__icon" alt="">
+          </button>
+          <button type="button" class="result__action" title="Borrar resultado" js-delete>
+            <img src="/trash.png" class="result__action__icon" alt="">
+          </button>
+        </div>
       </div>
     </template>
   </body>

@@ -1,6 +1,7 @@
 import ResultData from '../Types/ResultData'
 
 import Form from './Form'
+import Modal from './Modal'
 
 class Result extends HTMLElement {
   readonly label: string
@@ -11,12 +12,14 @@ class Result extends HTMLElement {
   readonly totalMeters: number
   readonly pricePerMeter: number
   index: number
+  deleteModal: Modal
 
   constructor(resultData: ResultData, index: number) {
     super()
 
-    this.edit = this.edit.bind(this)
+    this.handleEdit = this.handleEdit.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
+    this.delete = this.delete.bind(this)
 
     this.label = resultData.label
     this.quantity = resultData.quantity
@@ -40,6 +43,7 @@ class Result extends HTMLElement {
     const totalMetersElement = templateClone.querySelector('[js-value=totalMeters]') as HTMLElement
     const pricePerMeterElement = templateClone.querySelector('[js-value=pricePerMeter]') as HTMLElement
     const deleteBtn = templateClone.querySelector('[js-delete]') as HTMLButtonElement
+    const editBtn = templateClone.querySelector('[js-edit]') as HTMLButtonElement
     titleElement.innerText = this.label
     quantityElement.innerText = this.quantity.toLocaleString()
     metersElement.innerText = this.meters.toLocaleString()
@@ -50,20 +54,27 @@ class Result extends HTMLElement {
     this.role = 'listitem'
     this.appendChild(templateClone)
     this.index = index
+    this.deleteModal = document.querySelector('[js-modal=delete]') as Modal
     deleteBtn.addEventListener('click', this.handleDelete)
-    this.addEventListener('click', this.edit)
+    editBtn.addEventListener('click', this.handleEdit)
   }
 
-  handleDelete(event: MouseEvent) {
-    event.preventDefault()
-    event.stopPropagation()
-    window.Results.removeResult(this.index)
+  handleDelete() {
+    const confirmationBtn = this.deleteModal.querySelector('[js-delete-confirmation]') as HTMLButtonElement
+    confirmationBtn.addEventListener('click', this.delete)
+    this.deleteModal.addEventListener('papelapp:modal-close', () => confirmationBtn.removeEventListener('click', this.delete), { once: true })
+    this.deleteModal.show()
   }
 
-  edit() {
+  handleEdit() {
     const form = document.querySelector('[js-form-wrapper]') as Form
     if (!form) return
     form.show({ label: this.label, meters: this.meters, price: this.price, quantity: this.quantity, resultIndex: this.index })
+  }
+
+  delete() {
+    this.deleteModal.hide()
+    window.Results.removeResult(this.index)
   }
 
   updateIndex(index: number) {

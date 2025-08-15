@@ -12,7 +12,7 @@ Podés acceder a la app acá: [🧻 Papelapp](https://papelapp.ares.uy)
 
 Para levantar una versión local de desarrollo de la app:
 
-1. Clonar el repositorio
-2. Instalar [Node.js](https://nodejs.org)
-3. Ejecutar el comando `npm install` en la carpeta del proyecto
-4. Ejecutar el comando `npm run dev` para levantar un servidor local de desarrollo en el puerto 5173
+1. Clonar el repositorio.
+2. Instalar [Node.js](https://nodejs.org) y [pnpm](https://pnpm.io).
+3. Ejecutar el comando `pnpm i` en la carpeta del proyecto para instalar las dependencias del proyecto.
+4. Ejecutar el comando `pnpm dev` para levantar un servidor local de desarrollo en el puerto 5173: [localhost:5173](http://localhost:5173).

@@ -1,258 +1,269 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Papelapp</title>
-    <meta name="description" content="Calculadora de precio por metro de papel higiénico">
-    <link rel="icon" href="/favicon.png">
-    <link rel="manifest" href="/manifest.webmanifest">
-    <meta name="theme-color" content="#1167b1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css">
-    <link rel="author" href="https://ares.uy">
-    <meta name="author" content="Ares Software">
-    <script type="module" src="/src/main.ts"></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EPFDJ30GTL"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-EPFDJ30GTL');
-    </script>
-  </head>
-  <body>
-    <header class="header">
-      <div class="content">
-        <img class="logo" src="/logo.png" alt="">
-        <div class="title-wrapper">
-          <h1 class="title-main">
-            Papelapp
-          </h1>
-          <span class="subtitle-main">
-            Calculadora de precio por metro de papel higiénico
-          </span>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Papelapp</title>
+  <meta name="description" content="Calculadora de precio por metro de papel higiénico">
+  <link rel="icon" href="/favicon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#1167b1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="author" href="https://ares.uy">
+  <meta name="author" content="Ares Software">
+  <script type="module" src="/src/main.ts"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EPFDJ30GTL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-EPFDJ30GTL');
+  </script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="content">
+      <img class="logo" src="/logo.png" alt="">
+      <div class="title-wrapper">
+        <h1 class="title-main">
+          Papelapp
+        </h1>
+        <span class="subtitle-main">
+          Calculadora de precio por metro de papel higiénico
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main class="content main">
+    <section class="section-welcome show" js-section="welcome">
+      <h2 class="welcome__title">
+        Te damos la bienvenida a Papelapp
+      </h2>
+      <div class="welcome__content">
+        <p>
+          ¿Cuántas veces te encontraste frente a la góndola del supermercado
+          intentando descubrir cuál es la oferta de papel higiénico más conveniente?
+          Precio total dividido cantidad de rollos por metro por rollo... fácil, ¿no? 🤔 Más bien, engorroso 😓
+          Parece pavada pero es un tema serio que Fernando Esponda describe muy bien en su
+          <a rel="noreferrer noopener nofollow" target="_blank"
+            href="http://www.razonesypersonas.com/2021/03/teorema-del-precio-unitario-del-papel.html">teorema del precio
+            unitario del papel higiénico</a> 📝
+        </p>
+        <p>
+          Con <strong>🧻 Papelapp</strong> podés comparar el precio por metro de los paquetes de
+          papel higiénico rápida y fácilmente... eso sí, la elección de la calidad es tuya y no
+          la podemos calcular 🍑
+        </p>
+        <h3>
+          Para usar la app:
+        </h3>
+        <p>
+        <ol>
+          <li>
+            Cargá los datos de los distintos paquetes que veas en las góndolas 🧐
+          </li>
+          <li>
+            <strong>🧻 Papelapp</strong> calculará la cantidad de metros y el precio por metro de cada uno,
+            ordenándolos por precio de menor a mayor 🙌
+          </li>
+        </ol>
+        </p>
+      </div>
+    </section>
+    <section class="section-results" js-section="results">
+      <header class="section-results__header">
+        <h2 id="title-results" class="title-results">
+          Resultados
+        </h2>
+        <button type="button" class="btn-share" title="Compartir resultados" js-share>
+          <img class="btn-share__icon" src="/share.png" alt="">
+        </button>
+      </header>
+      <ul class="results" js-results aria-labelledby="title-results"></ul>
+    </section>
+
+    <div class="btn-add-wrapper">
+      <p class="btn-add-wrapper__arrow">
+        Hacé click en este botón para cargar el primer producto
+        <img class="btn-add-wrapper__arrow__img" src="/arrow.png" alt="">
+        <img class="btn-add-wrapper__arrow__img--mobile" src="/arrow-down.png" alt="">
+      </p>
+      <button type="button" class="btn btn--round btn-add" js-add>
+        <img class="btn-add__img" src="/add.png" alt="Agregar producto">
+      </button>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="content">
+      <span class="footer__text">
+        Desarrollado por
+        <br class="footer__mobile-break">
+        <a class="footer__link" href="https://ares.uy" target="_blank">Fermín Ares</a>
+        y
+        <a class="footer__link" href="https://www.linkedin.com/in/luciayarzabalgutierrez/" target="_blank"
+          rel="noreferrer noopener nofollow">
+          Lucía Yarzábal
+        </a>
+        <br>
+        La Paloma, Rocha, Uruguay
+      </span>
+      <span class="footer__text">
+        Código abierto en
+        <a class="footer__link" href="https://github.com/ferares/papelapp">
+          GitHub
+        </a>
+        <br>
+        Iconos creados por
+        <a class="footer__link" href="https://www.flaticon.com" target="_blank" rel="noreferrer noopener nofollow">
+          Freepik - Flaticon
+        </a>
+        <br>
+        <a class="footer__link" href="/privacidad.html">
+          Política de privacidad
+        </a>
+      </span>
+    </div>
+  </footer>
+
+  <div class="visually-hidden" aria-live="polite" aria-atomic="true" js-sr-alert="polite"></div>
+  <div class="visually-hidden" aria-live="assertive" aria-atomic="true" js-sr-alert="assertive"></div>
+
+  <papelapp-modal class="modal" js-modal="form">
+    <dialog class="modal-dialog" aria-labelledby="modal-title" js-dialog>
+      <div class="modal-content" js-modal-content>
+        <h2 id="modal-title" class="modal-title" js-modal-title>
+          Agregar producto
+        </h2>
+        <button type="button" class="modal-close" js-modal-close>
+          <img src="/close.png" alt="Cerrar">
+        </button>
+        <papelapp-form js-form-wrapper>
+          <form class="form" novalidate js-form>
+            <div class="form__content">
+              <label class="form__label" for="label">
+                Marca/Alias
+              </label>
+              <div class="form__input-group">
+                <input id="label" class="form__input" type="text" js-input="label" aria-describedby="label-description">
+                <span id="label-description" class="visually-hidden">Ingrese un nombre para identificar el
+                  producto</span>
+              </div>
+              <label class="form__label" for="quantity">
+                Cantidad de rollos*
+              </label>
+              <div class="form__input-group">
+                <input id="quantity" class="form__input" type="number" min="1" step="1" js-input="quantity" required
+                  aria-describedby="invalid-quantity">
+                <span id="invalid-quantity" class="invalid-feedback">Ingrese una cantidad mayor que 1</span>
+              </div>
+              <label class="form__label" for="meters">
+                Metros por rollo*
+              </label>
+              <div class="form__input-group">
+                <input id="meters" class="form__input" type="number" min="1" step="1" js-input="meters" required
+                  aria-describedby="invalid-meters">
+                <span id="invalid-meters" class="invalid-feedback">Ingrese una cantidad mayor que 1</span>
+              </div>
+              <label class="form__label" for="price">
+                Precio del paquete*
+              </label>
+              <div class="form__input-group">
+                <input id="price" class="form__input" type="number" min="0" step="any" js-input="price" required
+                  aria-describedby="invalid-price">
+                <span id="invalid-price" class="invalid-feedback">Ingrese un precio mayor que 0</span>
+              </div>
+            </div>
+            <div class="form__footer">
+              <span class="form__help">
+                Los campos marcados con * son requeridos
+              </span>
+              <button type="submit" class="btn" js-form-btn>
+                Agregar
+              </button>
+            </div>
+          </form>
+        </papelapp-form>
+      </div>
+    </dialog>
+  </papelapp-modal>
+
+  <papelapp-modal class="modal" js-modal="delete">
+    <dialog class="modal-dialog" aria-labelledby="modal-title" js-dialog>
+      <div class="modal-content" js-modal-content>
+        <h2 id="modal-title" class="modal-title" js-modal-title>
+          Borrar elemento
+        </h2>
+        <button type="button" class="modal-close" js-modal-close>
+          <img src="/close.png" alt="Cerrar">
+        </button>
+        <span class="delete-question">
+          ¿Desea borrar este elemento?
+        </span>
+        <div class="delete-btns">
+          <button type="button" class="btn" js-delete-confirmation>
+            Si
+          </button>
+          <button type="button" class="btn" js-modal-close>
+            No
+          </button>
         </div>
       </div>
-    </header>
+    </dialog>
+  </papelapp-modal>
 
-    <main class="content main">
-      <section class="section-welcome show" js-section="welcome">
-        <h2 class="welcome__title">
-          Te damos la bienvenida a Papelapp
-        </h2>
-        <div class="welcome__content">
-          <p>
-            ¿Cuántas veces te encontraste frente a la góndola del supermercado
-            intentando descubrir cuál es la oferta de papel higiénico más conveniente?
-            Precio total dividido cantidad de rollos por metro por rollo... fácil, ¿no? 🤔 Más bien, engorroso 😓
-            Parece pavada pero es un tema serio que Fernando Esponda describe muy bien en su
-            <a rel="noreferrer noopener nofollow" target="_blank" href="http://www.razonesypersonas.com/2021/03/teorema-del-precio-unitario-del-papel.html">teorema del precio unitario del papel higiénico</a> 📝
-          </p>
-          <p>
-            Con <strong>🧻 Papelapp</strong> podés comparar el precio por metro de los paquetes de
-            papel higiénico rápida y fácilmente... eso sí, la elección de la calidad es tuya y no
-            la podemos calcular 🍑
-          </p>
-          <h3>
-            Para usar la app:
-          </h3>
-          <p>
-            <ol>
-              <li>
-                Cargá los datos de los distintos paquetes que veas en las góndolas 🧐
-              </li>
-              <li>
-                <strong>🧻 Papelapp</strong> calculará la cantidad de metros y el precio por metro de cada uno,
-                ordenándolos por precio de menor a mayor 🙌
-              </li>
-            </ol>
-          </p>
-        </div>
-      </section>
-      <section class="section-results" js-section="results">
-        <header class="section-results__header">
-          <h2 id="title-results" class="title-results">
-            Resultados
-          </h2>
-          <button type="button" class="btn-share" title="Compartir resultados" js-share>
-            <img class="btn-share__icon" src="/share.png" alt="">
-          </button>
-        </header>
-        <ul class="results" js-results aria-labelledby="title-results"></ul>
-      </section>
+  <template js-template="alert">
+    <span js-alert-content></span>
+    <button type="button" class="btn-alert-close" title="Cerrar aviso" js-alert-close>
+      <img class="btn-alert-close__img" src="/close.png" alt="">
+    </button>
+  </template>
 
-      <div class="btn-add-wrapper">
-        <p class="btn-add-wrapper__arrow">
-          Hacé click en este botón para cargar el primer producto
-          <img class="btn-add-wrapper__arrow__img" src="/arrow.png" alt="">
-          <img class="btn-add-wrapper__arrow__img--mobile" src="/arrow-down.png" alt="">
-        </p>
-        <button type="button" class="btn btn--round btn-add" js-add>
-          <img class="btn-add__img" src="/add.png" alt="Agregar producto">
+  <template js-template="result">
+    <span class="result__best">Más económico</span>
+    <div class="result__content">
+      <h3 class="result__title" js-title></h3>
+      <div class="result__value-group">
+        <span class="result__value" js-value="quantity"></span>
+        <span class="result__label">
+          rollos de
+        </span>
+        <span class="result__value" js-value="meters"></span>
+        <span class="result__label">
+          metros a
+        </span>
+        <span class="result__value" js-value="price"></span>
+      </div>
+      <hr class="result__line">
+      <div class="result__value-group result__value-group--highlight">
+        <span class="result__value" js-value="totalMeters"></span>
+        <span class="result__label">
+          metros a
+        </span>
+        <span class="result__value" js-value="pricePerMeter"></span>
+        <span class="result__label">
+          por metro
+        </span>
+      </div>
+      <div class="result__actions">
+        <button type="button" class="result__action" title="Editar resultado" js-edit>
+          <img src="/edit.png" class="result__action__icon" alt="">
+        </button>
+        <button type="button" class="result__action" title="Borrar resultado" js-delete>
+          <img src="/trash.png" class="result__action__icon" alt="">
         </button>
       </div>
-    </main>
+    </div>
+  </template>
+</body>
 
-    <footer class="footer">
-      <div class="content">
-        <span class="footer__text">
-          Desarrollado por
-          <br class="footer__mobile-break">
-          <a class="footer__link" href="https://github.com/ferares" target="_blank" rel="noreferrer noopener nofollow">Fermín Ares</a>
-          y
-          <a class="footer__link" href="https://www.linkedin.com/in/luciayarzabalgutierrez/" target="_blank" rel="noreferrer noopener nofollow">
-            Lucía Yarzábal
-          </a>
-          <br>
-          La Paloma, Rocha, Uruguay
-        </span>
-        <span class="footer__text">
-          Código abierto en 
-          <a class="footer__link" href="https://github.com/ferares/papelapp">
-            GitHub
-          </a>
-          <br>
-          Iconos creados por
-          <a class="footer__link" href="https://www.flaticon.com" target="_blank" rel="noreferrer noopener nofollow">
-            Freepik - Flaticon
-          </a>
-          <br>
-          <a class="footer__link" href="/privacidad.html">
-            Política de privacidad
-          </a>
-        </span>
-      </div>
-    </footer>
-
-    <div class="visually-hidden" aria-live="polite" aria-atomic="true" js-sr-alert="polite"></div>
-    <div class="visually-hidden" aria-live="assertive" aria-atomic="true" js-sr-alert="assertive"></div>
-
-    <papelapp-modal class="modal" js-modal="form">
-      <dialog class="modal-dialog" aria-labelledby="modal-title" js-dialog>
-        <div class="modal-content" js-modal-content>
-          <h2 id="modal-title" class="modal-title" js-modal-title>
-            Agregar producto
-          </h2>
-          <button type="button" class="modal-close" js-modal-close>
-            <img src="/close.png" alt="Cerrar">
-          </button>
-          <papelapp-form js-form-wrapper>
-            <form class="form" novalidate js-form>
-              <div class="form__content">
-                <label class="form__label" for="label">
-                  Marca/Alias
-                </label>
-                <div class="form__input-group">
-                  <input id="label" class="form__input" type="text" js-input="label" aria-describedby="label-description">
-                  <span id="label-description" class="visually-hidden">Ingrese un nombre para identificar el producto</span>
-                </div>
-                <label class="form__label" for="quantity">
-                  Cantidad de rollos*
-                </label>
-                <div class="form__input-group">
-                  <input id="quantity" class="form__input" type="number" min="1" step="1" js-input="quantity" required aria-describedby="invalid-quantity">
-                  <span id="invalid-quantity" class="invalid-feedback">Ingrese una cantidad mayor que 1</span>
-                </div>
-                <label class="form__label" for="meters">
-                  Metros por rollo*
-                </label>
-                <div class="form__input-group">
-                  <input id="meters" class="form__input" type="number" min="1" step="1" js-input="meters" required aria-describedby="invalid-meters">
-                  <span id="invalid-meters" class="invalid-feedback">Ingrese una cantidad mayor que 1</span>
-                </div>
-                <label class="form__label" for="price">
-                  Precio del paquete*
-                </label>
-                <div class="form__input-group">
-                  <input id="price" class="form__input" type="number" min="0" step="any" js-input="price" required aria-describedby="invalid-price">
-                  <span id="invalid-price" class="invalid-feedback">Ingrese un precio mayor que 0</span>
-                </div>
-              </div>
-              <div class="form__footer">
-                <span class="form__help">
-                  Los campos marcados con * son requeridos
-                </span>
-                <button type="submit" class="btn" js-form-btn>
-                  Agregar
-                </button>
-              </div>
-            </form>
-          </papelapp-form>
-        </div>
-      </dialog>
-    </papelapp-modal>
-
-    <papelapp-modal class="modal" js-modal="delete">
-      <dialog class="modal-dialog" aria-labelledby="modal-title" js-dialog>
-        <div class="modal-content" js-modal-content>
-          <h2 id="modal-title" class="modal-title" js-modal-title>
-            Borrar elemento
-          </h2>
-          <button type="button" class="modal-close" js-modal-close>
-            <img src="/close.png" alt="Cerrar">
-          </button>
-          <span class="delete-question">
-            ¿Desea borrar este elemento?
-          </span>
-          <div class="delete-btns">
-            <button type="button" class="btn" js-delete-confirmation>
-              Si
-            </button>
-            <button type="button" class="btn" js-modal-close>
-              No
-            </button>
-          </div>
-        </div>
-      </dialog>
-    </papelapp-modal>
-
-    <template js-template="alert">
-      <span js-alert-content></span>
-      <button type="button" class="btn-alert-close" title="Cerrar aviso" js-alert-close>
-        <img class="btn-alert-close__img" src="/close.png" alt="">
-      </button>
-    </template>
-
-    <template js-template="result">
-      <span class="result__best">Más económico</span>
-      <div class="result__content">
-        <h3 class="result__title" js-title></h3>
-        <div class="result__value-group">
-          <span class="result__value" js-value="quantity"></span>
-          <span class="result__label">
-            rollos de
-          </span>
-          <span class="result__value" js-value="meters"></span>
-          <span class="result__label">
-            metros a
-          </span>
-          <span class="result__value" js-value="price"></span>
-        </div>
-        <hr class="result__line">
-        <div class="result__value-group result__value-group--highlight">
-          <span class="result__value" js-value="totalMeters"></span>
-          <span class="result__label">
-            metros a
-          </span>
-          <span class="result__value" js-value="pricePerMeter"></span>
-          <span class="result__label">
-            por metro
-          </span>
-        </div>
-        <div class="result__actions">
-          <button type="button" class="result__action" title="Editar resultado" js-edit>
-            <img src="/edit.png" class="result__action__icon" alt="">
-          </button>
-          <button type="button" class="result__action" title="Borrar resultado" js-delete>
-            <img src="/trash.png" class="result__action__icon" alt="">
-          </button>
-        </div>
-      </div>
-    </template>
-  </body>
 </html>

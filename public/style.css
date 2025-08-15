@@ -281,6 +281,7 @@ ol {
   align-items: center;
   display: flex;
   gap: 1rem;
+  text-decoration: none;
 }
 
 .title-wrapper {

@@ -59,10 +59,17 @@ class Results {
     this.print()
   }
 
+  announceBestResult() {
+    const bestResult = this.results[this.results.length - 1]
+    let message = `Opción más económica. ${bestResult.srLabel}`
+    window.Papelapp.srAlert(`Opción más económica. ${message}`)
+  }
+
   removeResult(index: number) {
     this.results.splice(index, 1)
     localStorage.setItem('results', this.stringify())
     this.print()
+    this.announceBestResult()
   }
 
   add(result: Result) {
@@ -70,17 +77,15 @@ class Results {
     this.results = this.results.sort((a, b) => b.pricePerMeter - a.pricePerMeter)
     localStorage.setItem('results', this.stringify())
     this.print()
-    const bestResult = this.results[this.results.length - 1]
-    let message = 'Opción más económica. '
-    if (result === bestResult) message += result.srLabel
-    else message += `${result.srLabel}. ${bestResult.srLabel}`
-    window.Papelapp.srAlert(`Opción más económica. ${message}`)
+    this.announceBestResult()
   }
 
   editResult(index: number, result: Result) {
     this.results[index] = result
+    this.results = this.results.sort((a, b) => b.pricePerMeter - a.pricePerMeter)
     localStorage.setItem('results', this.stringify())
     this.print()
+    this.announceBestResult()
   }
 
   private print() {
